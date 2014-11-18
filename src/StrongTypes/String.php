@@ -46,7 +46,7 @@ class String extends AbstractShape implements StringInterface
             return strlen($string);
         };
 
-        if ($this->value && is_string($this->value) === false) {
+        if (!is_null($this->value) && !is_string($this->value)) {
             throw new UnexpectedValueException(
                 sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'string', $this->getClassOrType($this->value))
             );
@@ -110,7 +110,7 @@ class String extends AbstractShape implements StringInterface
      */
     protected function validateAsInteger($param)
     {
-        if (is_int($param) === false) {
+        if (!is_int($param)) {
             throw new InvalidArgumentException(
                 sprintf('The parameter was expecting an integer, but instead received a value of type %s.',
                     $this->getClassOrType($param)

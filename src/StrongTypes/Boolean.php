@@ -34,7 +34,7 @@ class Boolean extends AbstractShape implements BooleanInterface
      */
     public function validate()
     {
-        if ($this->value && is_bool($this->value) === false) {
+        if (!is_null($this->value) && !is_bool($this->value)) {
             throw new UnexpectedValueException(
                 sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'boolean', gettype($this->value))
             );

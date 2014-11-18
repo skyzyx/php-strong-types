@@ -119,7 +119,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
                 'wvut' => 'bbb',
                 'srqp' => 'ccc',
             ],
-        ], true);
+        ]);
 
         $this->assertEquals(json_encode([
             'abc' => 'xyz',
