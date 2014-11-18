@@ -46,7 +46,7 @@ class String extends AbstractShape implements StringInterface
             return strlen($string);
         };
 
-        if (!is_null($this->value) && !is_string($this->value)) {
+        if ($this->value !== null && !is_string($this->value)) {
             throw new UnexpectedValueException(
                 sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'string', $this->getClassOrType($this->value))
             );

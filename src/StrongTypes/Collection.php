@@ -74,7 +74,7 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
      */
     public function validate()
     {
-        if (!is_null($this->value) && !is_array($this->value)) {
+        if ($this->value !== null && !is_array($this->value)) {
             throw new UnexpectedValueException(
                 sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'array', gettype($this->value))
             );

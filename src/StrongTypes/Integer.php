@@ -34,7 +34,7 @@ class Integer extends AbstractShape implements IntegerInterface
      */
     public function validate()
     {
-        if (!is_null($this->value) && !is_int($this->value)) {
+        if ($this->value !== null && !is_int($this->value)) {
             throw new UnexpectedValueException(
                 sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'integer', gettype($this->value))
             );

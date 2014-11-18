@@ -60,8 +60,8 @@ trait AliasTrait
      * Set the value for a specific offset.
      *
      * @see ArrayIterator::offsetSet
-     * @param  integer    $offset The location in the collection to set a new value for.
-     * @param  integer      $value  The new value for the collection location.
+     * @param integer $offset The location in the collection to set a new value for.
+     * @param integer $value  The new value for the collection location.
      */
     public function set($offset, $value)
     {
@@ -74,11 +74,11 @@ trait AliasTrait
      * Unset the value for a specific offset.
      *
      * @see ArrayIterator::offsetUnset
-     * @param  integer    $offset The location in the collection to unset.
+     * @param integer $offset The location in the collection to unset.
      */
     public function remove($offset)
     {
-        if (!is_null($offset) && $this->collection->offsetExists($offset)) {
+        if ($offset !== null && $this->collection->offsetExists($offset)) {
             $this->collection->offsetUnset($offset);
         }
 
