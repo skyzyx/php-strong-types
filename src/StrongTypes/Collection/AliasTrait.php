@@ -61,8 +61,7 @@ trait AliasTrait
      *
      * @see ArrayIterator::offsetSet
      * @param  integer    $offset The location in the collection to set a new value for.
-     * @param  mixed      $value  The new value for the collection location.
-     * @return Collection A reference to the current collection.
+     * @param  integer      $value  The new value for the collection location.
      */
     public function set($offset, $value)
     {
@@ -76,7 +75,6 @@ trait AliasTrait
      *
      * @see ArrayIterator::offsetUnset
      * @param  integer    $offset The location in the collection to unset.
-     * @return Collection A reference to the current collection.
      */
     public function remove($offset)
     {

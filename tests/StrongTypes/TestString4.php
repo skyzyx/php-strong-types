@@ -29,6 +29,9 @@ use Skyzyx\StrongTypes\String;
 
 class TestString4 extends String
 {
+    /**
+     * @param string $s
+     */
     public function __construct($s)
     {
         $this->setExactLength(new String('abc'));
