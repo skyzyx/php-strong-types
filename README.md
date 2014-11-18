@@ -1,6 +1,6 @@
 # PHP Strong Types
 
-[![Source](http://img.shields.io/badge/source-skyzyx/php–strong-types-blue.svg?style=flat-square)](https://github.com/skyzyx/php-strong–types)
+[![Source](http://img.shields.io/badge/source-skyzyx/php%E2%80%93strong%E2%80%93types-blue.svg?style=flat-square)](https://github.com/skyzyx/php-strong–types)
 [![Latest Stable Version](http://img.shields.io/packagist/v/skyzyx/strong-types.svg?style=flat-square)](https://packagist.org/packages/skyzyx/strong-types)
 [![Total Downloads](http://img.shields.io/packagist/dt/skyzyx/strong-types.svg?style=flat-square)](https://packagist.org/packages/skyzyx/strong-types)
 [![Open Issues](http://img.shields.io/github/issues/skyzyx/php-strong-types.svg?style=flat-square)](https://github.com/skyzyx/php-strong-types/issues)
