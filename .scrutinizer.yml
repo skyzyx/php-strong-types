@@ -34,7 +34,7 @@ tools:
             check_debug_code:
                 enabled: true
             check_property_assignments:
-                enabled: true
+                enabled: false
             check_request_data_usage:
                 enabled: false
             check_usage_context:
@@ -52,7 +52,7 @@ tools:
                     enabled: true
                     exception_name: "^[A-Z][a-zA-Z0-9]*Exception$"
                     interface_name: "^[A-Z][a-zA-Z0-9]*Interface$"
-                    isser_method_name: "^(?:is|has|should|may|supports|valid)"
+                    isser_method_name: "^(?:is|has|should|may|supports|valid|exists|offset|get|set)"
                     local_variable: "^[a-z][a-zA-Z0-9_]*$"
                     method_name: "^(?:[a-z]|__)[a-zA-Z0-9]*$"
                     parameter_name: "^[a-z][a-zA-Z0-9_]*$"
