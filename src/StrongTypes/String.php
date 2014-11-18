@@ -103,7 +103,7 @@ class String extends AbstractShape implements StringInterface
     /**
      * Validates that the parameter was an integer.
      *
-     * @param  mixed $param The value to check.
+     * @param  integer $param The value to check.
      * @return void
      *
      * @throws InvalidArgumentException

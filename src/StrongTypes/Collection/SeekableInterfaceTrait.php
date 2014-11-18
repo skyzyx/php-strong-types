@@ -68,7 +68,6 @@ trait SeekableInterfaceTrait
      * Move to the next entry in the collection.
      *
      * @see ArrayIterator::next()
-     * @return Collection A reference to the current collection.
      */
     public function next()
     {
@@ -81,7 +80,6 @@ trait SeekableInterfaceTrait
      * Rewind pointer back to the beginning of the collection.
      *
      * @see ArrayIterator::rewind()
-     * @return Collection A reference to the current collection.
      */
     public function rewind()
     {

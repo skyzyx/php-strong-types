@@ -62,7 +62,6 @@ trait ArrayAccessTrait
      * @aliasof set
      * @param  integer    $offset The location in the collection to set a new value for.
      * @param  mixed      $value  The new value for the collection location.
-     * @return Collection A reference to the current collection.
      */
     public function offsetSet($offset, $value)
     {
@@ -76,7 +75,6 @@ trait ArrayAccessTrait
      *
      * @aliasof remove
      * @param  integer    $offset The location in the collection to unset.
-     * @return Collection A reference to the current collection.
      */
     public function offsetUnset($offset)
     {

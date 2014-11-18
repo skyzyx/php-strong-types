@@ -29,6 +29,9 @@ use Skyzyx\StrongTypes\MultibyteString;
 
 class TestMultibyteString extends MultibyteString
 {
+    /**
+     * @param string $s
+     */
     public function __construct($s)
     {
         $this->setMinLength(5);

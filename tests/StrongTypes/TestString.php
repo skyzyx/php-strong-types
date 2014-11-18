@@ -29,6 +29,9 @@ use Skyzyx\StrongTypes\String;
 
 class TestString extends String
 {
+    /**
+     * @param string $s
+     */
     public function __construct($s)
     {
         $this->setMinLength(5);
