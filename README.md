@@ -1,10 +1,10 @@
 # PHP Strong Types
 
-[![Source](http://img.shields.io/badge/source-skyzyx/strong-types-blue.svg?style=flat-square)](https://github.com/skyzyx/strong–types)
+[![Source](http://img.shields.io/badge/source-skyzyx/php–strong-types-blue.svg?style=flat-square)](https://github.com/skyzyx/php-strong–types)
 [![Latest Stable Version](http://img.shields.io/packagist/v/skyzyx/strong-types.svg?style=flat-square)](https://packagist.org/packages/skyzyx/strong-types)
 [![Total Downloads](http://img.shields.io/packagist/dt/skyzyx/strong-types.svg?style=flat-square)](https://packagist.org/packages/skyzyx/strong-types)
 [![Open Issues](http://img.shields.io/github/issues/skyzyx/php-strong-types.svg?style=flat-square)](https://github.com/skyzyx/php-strong-types/issues)
-[![Build Status](http://img.shields.io/travis/skyzyx/strong-types/master.svg?style=flat-square)](https://travis-ci.org/skyzyx/strong-types)
+[![Build Status](http://img.shields.io/travis/skyzyx/php-strong-types/master.svg?style=flat-square)](https://travis-ci.org/skyzyx/php-strong-types)
 [![Coverage Status](http://img.shields.io/coveralls/skyzyx/strong-types/master.svg?style=flat-square)](https://coveralls.io/r/skyzyx/php-strong-types?branch=master)
 [![Code Climate](http://img.shields.io/codeclimate/github/skyzyx/strong-types.svg?style=flat-square)](https://codeclimate.com/github/skyzyx/php-strong-types)
 [![Code Quality](http://img.shields.io/scrutinizer/g/skyzyx/strong-types.svg?style=flat-square)](https://scrutinizer-ci.com/g/skyzyx/php-strong-types/)
