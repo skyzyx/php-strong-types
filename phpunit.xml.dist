@@ -1,0 +1,26 @@
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
+    bootstrap="tests/bootstrap.php"
+    colors="true"
+    convertErrorsToExceptions="true"
+    processIsolation="true"
+    stopOnError="false"
+    stopOnFailure="false"
+    stopOnIncomplete="false"
+    stopOnSkipped="false"
+    strict="true"
+    verbose="true">
+
+    <logging>
+        <log charset="UTF-8" highLowerBound="70" highlight="false" lowUpperBound="35" target="build/report" type="coverage-html"/>
+        <log target="build/coverage.xml" type="coverage-clover"/>
+        <log target="build/coverage.serialized" type="coverage-php"/>
+        <!--<log showUncoveredFiles="false" target="php://stdout" type="coverage-text"/>-->
+        <log target="build/logfile.json" type="json"/>
+        <log target="build/logfile.tap" type="tap"/>
+        <log target="build/logfile.xml" type="junit" logIncompleteSkipped="false"/>
+        <log target="build/testdox.html" type="testdox-html"/>
+        <log target="build/testdox.txt" type="testdox-text"/>
+    </logging>
+</phpunit>
