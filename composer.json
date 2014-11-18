@@ -17,10 +17,16 @@
         "php" : ">=5.4.0"
     },
     "require-dev": {
-        "codeclimate/php-test-reporter": "*@dev",
-        "phpunit/phpcov": "~2.0",
-        "phpunit/phpunit": "~4.3",
-        "satooshi/php-coveralls": "*@dev"
+        "codeclimate/php-test-reporter" : "*@dev",
+        "d11wtq/boris"                  : "*",
+        "fabpot/php-cs-fixer"           : "*",
+        "pdepend/pdepend"               : "*",
+        "phpmd/phpmd"                   : "*",
+        "phpunit/phpcov"                : "~2.0",
+        "phpunit/phpunit"               : "~4.3",
+        "satooshi/php-coveralls"        : "*@dev",
+        "sebastian/hhvm-wrapper"        : "~2.0",
+        "squizlabs/php_codesniffer"     : "~2.0@dev"
     },
     "config": {
         "bin-dir": "bin/"
