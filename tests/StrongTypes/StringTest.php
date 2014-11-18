@@ -95,6 +95,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @requires PHP 5.6
      * @expectedException        LengthException
      * @expectedExceptionMessage The length of the Skyzyx\Tests\StrongTypes\TestMultibyteString object is 3,
      *                           but MUST be between 5 and 20.
@@ -105,6 +106,9 @@ class StringTest extends \PHPUnit_Framework_TestCase
         $s = new TestMultibyteString('æœ℅');
     }
 
+    /**
+     * @requires PHP 5.6
+     */
     public function testMaxMultibyteLengthOk()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
