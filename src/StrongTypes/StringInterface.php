@@ -25,14 +25,12 @@
 
 namespace Skyzyx\StrongTypes;
 
-use UnexpectedValueException;
-
 interface StringInterface extends ShapeInterface
 {
     /**
      * Sets the minimum allowable length of the string.
      *
-     * @param integer $length The length for this setting.
+     * @param  integer $length The length for this setting.
      * @return self
      */
     public function setMinLength($length);
@@ -40,7 +38,7 @@ interface StringInterface extends ShapeInterface
     /**
      * Sets the maximum allowable length of the string.
      *
-     * @param integer $length The length for this setting.
+     * @param  integer $length The length for this setting.
      * @return self
      */
     public function setMaxLength($length);
@@ -48,7 +46,7 @@ interface StringInterface extends ShapeInterface
     /**
      * Sets the exact allowable length of the string.
      *
-     * @param integer $length The length for this setting.
+     * @param  integer $length The length for this setting.
      * @return self
      */
     public function setExactLength($length);

@@ -27,6 +27,9 @@ namespace Skyzyx\StrongTypes\Collection;
 
 trait IteratorAggregateTrait
 {
+    /** @var \ArrayIterator */
+    private $iterator;
+
     /**
      * Retrieve an external iterator.
      *

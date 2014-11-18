@@ -44,9 +44,6 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
     /** @var \ArrayObject */
     private $collection;
 
-    /** @var \ArrayIterator */
-    private $iterator;
-
     /** @var array */
     private $required_keys = [];
 
@@ -155,7 +152,7 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
     /**
      * Stores the list of required keys for processing.
      *
-     * @param  array  $keys The response from a call to `requiredKeys()`.
+     * @param  array $keys The response from a call to `requiredKeys()`.
      * @return void
      */
     protected function storeRequiredKeys(array $keys)
@@ -178,7 +175,7 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
     /**
      * Plucks a key from the list of required keys, and returns the list of remaining keys.
      *
-     * @param  string  $key The key to remove from the list of required keys.
+     * @param  string $key The key to remove from the list of required keys.
      * @return void
      */
     protected function pluckFromRequiredKeys($key)
