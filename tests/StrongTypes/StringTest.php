@@ -27,7 +27,7 @@ namespace Skyzyx\Tests\StrongTypes;
 
 use Skyzyx\StrongTypes\String;
 
-class StringTest extends PHPUnit_Framework_TestCase
+class StringTest extends \PHPUnit_Framework_TestCase
 {
     public function testStringType()
     {

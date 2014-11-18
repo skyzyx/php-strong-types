@@ -12,6 +12,12 @@
     strict="true"
     verbose="true">
 
+    <testsuites>
+        <testsuite name="unit">
+            <directory phpVersion="5.4.0" phpVersionOperator=">=" suffix="Test.php">tests/StrongTypes</directory>
+        </testsuite>
+    </testsuites>
+
     <logging>
         <log charset="UTF-8" highLowerBound="70" highlight="false" lowUpperBound="35" target="build/report" type="coverage-html"/>
         <log target="build/coverage.xml" type="coverage-clover"/>

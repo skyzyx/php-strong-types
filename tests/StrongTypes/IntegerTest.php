@@ -27,7 +27,7 @@ namespace Skyzyx\Tests\StrongTypes;
 
 use Skyzyx\StrongTypes\Integer;
 
-class IntegerTest extends PHPUnit_Framework_TestCase
+class IntegerTest extends \PHPUnit_Framework_TestCase
 {
     public function testIntegerType()
     {

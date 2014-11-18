@@ -27,7 +27,7 @@ namespace Skyzyx\Tests\StrongTypes;
 
 use Skyzyx\StrongTypes\Enum;
 
-class EnumTest extends PHPUnit_Framework_TestCase
+class EnumTest extends \PHPUnit_Framework_TestCase
 {
     public function testEnumType()
     {

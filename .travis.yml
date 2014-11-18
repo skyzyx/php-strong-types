@@ -14,11 +14,11 @@ before_script:
 
 script:
   - 'mkdir -p build/logs'
-  - 'php vendor/bin/phpunit -c phpunit.xml.dist'
+  - 'php bin/phpunit -c phpunit.xml.dist'
 
 after_script:
-  - 'if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then php vendor/bin/coveralls -v; fi;'
-  - 'if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then export CODECLIMATE_REPO_TOKEN=fb70997d311f1a2cdf4fbaa739928e1771738b3324405090da7b4543c3e28323; php vendor/bin/test-reporter --stdout > codeclimate.json; fi;'
+  - 'if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then php bin/coveralls -v; fi;'
+  - 'if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then export CODECLIMATE_REPO_TOKEN=fb70997d311f1a2cdf4fbaa739928e1771738b3324405090da7b4543c3e28323; php bin/test-reporter --stdout > codeclimate.json; fi;'
   - 'if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then curl -X POST -d @codeclimate.json -H "Content-Type: application/json" -H "User-Agent: Code Climate (PHP Test Reporter v0.1.1)" https://codeclimate.com/test_reports; fi;'
   - 'if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml; fi;'
 

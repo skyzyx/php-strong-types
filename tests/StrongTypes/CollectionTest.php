@@ -31,7 +31,7 @@ use Skyzyx\StrongTypes\Float;
 use Skyzyx\StrongTypes\Integer;
 use Skyzyx\StrongTypes\String;
 
-class CollectionTest extends PHPUnit_Framework_TestCase
+class CollectionTest extends \PHPUnit_Framework_TestCase
 {
     public $type;
 

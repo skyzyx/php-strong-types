@@ -27,7 +27,7 @@ namespace Skyzyx\Tests\StrongTypes;
 
 use Skyzyx\StrongTypes\Float;
 
-class FloatTest extends PHPUnit_Framework_TestCase
+class FloatTest extends \PHPUnit_Framework_TestCase
 {
     public function testFloatType()
     {
