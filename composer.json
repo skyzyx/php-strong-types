@@ -1,6 +1,6 @@
 {
     "name": "skyzyx/strong-types",
-    "description": "Strongly-enforced types.",
+    "description": "Enables strong types for PHP. This allows for tighter validation, especially when accepting input from users.",
     "keywords": ["strong","type","hhvm"],
     "type": "library",
     "license": "MIT",
