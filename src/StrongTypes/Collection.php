@@ -182,8 +182,6 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
     {
         if (isset($this->required_keys[$key])) {
             unset($this->required_keys[$key]);
-        } else {
-            throw new InvalidArgumentException('The "%s" key is not one of the required keys.', $key);
         }
     }
 

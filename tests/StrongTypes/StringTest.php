@@ -49,6 +49,40 @@ class StringTest extends \PHPUnit_Framework_TestCase
         new String(123);
     }
 
+    public function testClassOrType()
+    {
+        $type = new String('abc');
+        $this->assertEquals('string', $type->getClassOrType('abc'));
+        $this->assertEquals('Skyzyx\StrongTypes\String', $type->getClassOrType($type));
+    }
+
+    public function testExactLengthOk()
+    {
+        $this->assertEquals('', ''); // Shut-up, test runner
+        $s = new TestString2('abcde');
+    }
+
+    /**
+     * @expectedException        InvalidArgumentException
+     * @expectedExceptionMessage The parameter was expecting an integer, but instead received a value of type string.
+     */
+    public function testExactLengthFail()
+    {
+        $this->assertEquals('', ''); // Shut-up, test runner
+        $s = new TestString3('abcde');
+    }
+
+    /**
+     * @expectedException        InvalidArgumentException
+     * @expectedExceptionMessage The parameter was expecting an integer, but instead received a value of type
+     *                           Skyzyx\StrongTypes\String.
+     */
+    public function testExactLengthFail2()
+    {
+        $this->assertEquals('', ''); // Shut-up, test runner
+        $s = new TestString4('abcde');
+    }
+
     public function testLengthOk()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
