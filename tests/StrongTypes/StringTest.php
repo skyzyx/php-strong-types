@@ -59,7 +59,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testExactLengthOk()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestString2('abcde');
+        new TestString2('abcde');
     }
 
     /**
@@ -69,7 +69,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testExactLengthFail()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestString3('abcde');
+        new TestString3('abcde');
     }
 
     /**
@@ -80,19 +80,19 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testExactLengthFail2()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestString4('abcde');
+        new TestString4('abcde');
     }
 
     public function testLengthOk()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestString('abcdefghijkl');
+        new TestString('abcdefghijkl');
     }
 
     public function testLengthOk2()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestString('ಠ_ಠ');
+        new TestString('ಠ_ಠ');
     }
 
     /**
@@ -103,7 +103,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testMinLengthFail()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestString('abc');
+        new TestString('abc');
     }
 
     /**
@@ -114,7 +114,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testMaxLengthFail()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestString('abcdefghijklmnopqrstuvwxyz');
+        new TestString('abcdefghijklmnopqrstuvwxyz');
     }
 
     /**
@@ -125,7 +125,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testMaxLengthFail2()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestString('ಠ_ಠ ♪♫℃℉αβΔΣ‼︎⁈…æœ℅␛');
+        new TestString('ಠ_ಠ ♪♫℃℉αβΔΣ‼︎⁈…æœ℅␛');
     }
 
     /**
@@ -137,7 +137,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testMinMultibyteLengthOk()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestMultibyteString('æœ℅');
+        new TestMultibyteString('æœ℅');
     }
 
     /**
@@ -146,6 +146,6 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testMaxMultibyteLengthOk()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        $s = new TestMultibyteString('ಠ_ಠ ♪♫℃℉αβΔΣ‼︎⁈…æœ℅␛');
+        new TestMultibyteString('ಠ_ಠ ♪♫℃℉αβΔΣ‼︎⁈…æœ℅␛');
     }
 }

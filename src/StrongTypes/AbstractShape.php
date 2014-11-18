@@ -38,7 +38,7 @@ abstract class AbstractShape
     /**
      * Constructs a new instance of this object.
      *
-     * @param integer $value The value to assign to the instance.
+     * @param integer|null $value The value to assign to the instance.
      */
     public function __construct($value = null)
     {

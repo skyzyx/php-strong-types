@@ -74,7 +74,7 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
      */
     public function validate()
     {
-        if (!is_null($this->value) && !is_array($this->value)) {
+        if ($this->value && is_array($this->value) === false) {
             throw new UnexpectedValueException(
                 sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'array', gettype($this->value))
             );
@@ -83,20 +83,22 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
         $map = $this->validateValue();
         $this->storeRequiredKeys($this->requiredKeys());
 
-        foreach ($this->value as $k => $v) {
-            // If the key is defined...
-            if (isset($map[$k])) {
-                // ...validate its shape.
-                if (!($v instanceof $map[$k])) {
-                    throw new InvalidArgumentException(
-                        sprintf('The %s shape expects the %s key to be of type %s.',
-                            get_called_class(), $k, get_class($map[$k]))
-                    );
+        if (is_array($this->value) === true) {
+            foreach ($this->value as $k => $v) {
+                // If the key is defined...
+                if (isset($map[$k]) === true) {
+                    // ...validate its shape.
+                    if (($v instanceof $map[$k]) === false) {
+                        throw new InvalidArgumentException(
+                            sprintf('The %s shape expects the %s key to be of type %s.',
+                                get_called_class(), $k, get_class($map[$k]))
+                        );
+                    }
                 }
-            }
 
-            if ($this->isRequiredKey($k)) {
-                $this->pluckFromRequiredKeys($k);
+                if ($this->isRequiredKey($k) === true) {
+                    $this->pluckFromRequiredKeys($k);
+                }
             }
         }
 
@@ -180,7 +182,7 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
      */
     protected function pluckFromRequiredKeys($key)
     {
-        if (isset($this->required_keys[$key])) {
+        if (isset($this->required_keys[$key]) === true) {
             unset($this->required_keys[$key]);
         }
     }

@@ -83,7 +83,7 @@ checks:
         naming_conventions:
             local_variable: '^[a-z][a-zA-Z0-9_]*$'
             abstract_class_name: ^Abstract|Factory$
-            utility_class_name: 'Utils?$'
+            utility_class_name: '(Enum|Utils)?$'
             constant_name: '^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$'
             property_name: '^[a-z][a-zA-Z0-9_]*$'
             method_name: '^(?:[a-z]|__)[a-zA-Z0-9]*$'
@@ -91,7 +91,7 @@ checks:
             interface_name: '^[A-Z][a-zA-Z0-9]*Interface$'
             type_name: '^[A-Z][a-zA-Z0-9]*$'
             exception_name: '^[A-Z][a-zA-Z0-9]*Exception$'
-            isser_method_name: '^(?:is|has|should|may|supports)'
+            isser_method_name: '^(?:is|has|should|may|supports|valid)'
         more_specific_types_in_doc_comments: true
         missing_arguments: true
         method_calls_on_non_object: true

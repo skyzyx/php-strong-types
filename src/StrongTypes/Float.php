@@ -34,7 +34,7 @@ class Float extends AbstractShape implements FloatInterface
      */
     public function validate()
     {
-        if (!is_null($this->value) && !is_float($this->value)) {
+        if ($this->value && is_float($this->value) === false) {
             throw new UnexpectedValueException(
                 sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'float', gettype($this->value))
             );
