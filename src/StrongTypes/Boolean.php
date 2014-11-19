@@ -40,4 +40,12 @@ class Boolean extends AbstractShape implements BooleanInterface
             );
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return $this->value ? 'true' : 'false';
+    }
 }

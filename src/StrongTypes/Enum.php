@@ -36,4 +36,14 @@ class Enum implements EnumInterface
     {
         return (new ReflectionObject(new self()))->getConstants();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return sprintf('[%s]',
+            implode(', ', self::keys())
+        );
+    }
 }

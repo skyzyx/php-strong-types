@@ -40,4 +40,12 @@ class Integer extends AbstractShape implements IntegerInterface
             );
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return (string) $this->value;
+    }
 }

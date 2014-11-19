@@ -40,4 +40,12 @@ class Float extends AbstractShape implements FloatInterface
             );
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return (string) $this->value;
+    }
 }
