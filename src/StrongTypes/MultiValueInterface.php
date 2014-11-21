@@ -25,27 +25,6 @@
 
 namespace Skyzyx\StrongTypes;
 
-use \UnexpectedValueException;
-
-class Float extends AbstractShape implements FloatInterface, SingleValueInterface
+interface MultiValueInterface extends ShapeInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function validate()
-    {
-        if ($this->value !== null && !is_float($this->value)) {
-            throw new UnexpectedValueException(
-                sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'float', gettype($this->value))
-            );
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return (string) $this->value;
-    }
 }

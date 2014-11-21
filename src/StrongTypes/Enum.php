@@ -27,7 +27,7 @@ namespace Skyzyx\StrongTypes;
 
 use \ReflectionObject;
 
-class Enum implements EnumInterface
+class Enum implements EnumInterface, MultiValueInterface
 {
     /**
      * {@inheritdoc}

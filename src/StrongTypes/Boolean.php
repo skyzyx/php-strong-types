@@ -27,7 +27,7 @@ namespace Skyzyx\StrongTypes;
 
 use \UnexpectedValueException;
 
-class Boolean extends AbstractShape implements BooleanInterface
+class Boolean extends AbstractShape implements BooleanInterface, SingleValueInterface
 {
     /**
      * {@inheritdoc}

@@ -29,7 +29,7 @@ use \InvalidArgumentException;
 use \LengthException;
 use \UnexpectedValueException;
 
-class String extends AbstractShape implements StringInterface
+class String extends AbstractShape implements StringInterface, SingleValueInterface
 {
     /** @var integer */
     protected $min = 0;

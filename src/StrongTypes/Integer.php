@@ -27,7 +27,7 @@ namespace Skyzyx\StrongTypes;
 
 use \UnexpectedValueException;
 
-class Integer extends AbstractShape implements IntegerInterface
+class Integer extends AbstractShape implements IntegerInterface, SingleValueInterface
 {
     /**
      * {@inheritdoc}

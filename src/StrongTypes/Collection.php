@@ -33,7 +33,7 @@ use \IteratorAggregate;
 use \InvalidArgumentException;
 use \UnexpectedValueException;
 
-class Collection extends AbstractShape implements CollectionInterface, IteratorAggregate, ArrayAccess, Countable
+class Collection extends AbstractShape implements CollectionInterface, IteratorAggregate, ArrayAccess, Countable, MultiValueInterface
 {
     use Collection\AliasTrait;
     use Collection\ArrayAccessTrait;
