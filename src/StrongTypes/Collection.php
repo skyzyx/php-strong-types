@@ -117,7 +117,7 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
      */
     public function getValue()
     {
-        return $this->collection->getArrayCopy();
+        return $this->value;
     }
 
     /**
@@ -144,7 +144,45 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
      */
     public function __toString()
     {
-        return json_encode($this->collection->getArrayCopy());
+        return json_encode($this->value);
+    }
+
+    /**
+     * Checks to see whether or not this is an indexed array (e.g., list).
+     *
+     * @return boolean Whether or not this Collection is a List. A value of `true` means that the Collection is an
+     *                 indexed array. A value of `false` means that the Collection is an associative array.
+     */
+    public function isList()
+    {
+        foreach ($this->value as $a => $b) {
+            if ($a !== (integer) $a) {
+                /** @var boolean */
+                return false;
+            }
+        }
+
+        /** @var boolean */
+        return true;
+    }
+
+    /**
+     * Checks to see whether or not this is an associative array (e.g., hash, dictionary).
+     *
+     * @return boolean Whether or not this Collection is a Hash. A value of `true` means that the Collection is an
+     *                 associative array. A value of `false` means that the Collection is an indexed array.
+     */
+    public function isMap()
+    {
+        foreach ($this->value as $a => $b) {
+            if ($a !== (string) $a) {
+                /** @var boolean */
+                return false;
+            }
+        }
+
+        /** @var boolean */
+        return true;
     }
 
 

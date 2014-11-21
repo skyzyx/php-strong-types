@@ -60,12 +60,13 @@ trait ArrayAccessTrait
      * Set the value for a specific offset.
      *
      * @aliasof set
-     * @param  integer    $offset The location in the collection to set a new value for.
-     * @param  mixed      $value  The new value for the collection location.
+     * @param integer $offset The location in the collection to set a new value for.
+     * @param mixed   $value  The new value for the collection location.
      */
     public function offsetSet($offset, $value)
     {
         $this->collection->offsetSet($offset, $value);
+        $this->value = $this->collection->getArrayCopy();
 
         return $this;
     }
@@ -74,11 +75,12 @@ trait ArrayAccessTrait
      * Unset the value for a specific offset.
      *
      * @aliasof remove
-     * @param  integer    $offset The location in the collection to unset.
+     * @param integer $offset The location in the collection to unset.
      */
     public function offsetUnset($offset)
     {
         $this->collection->offsetUnset($offset);
+        $this->value = $this->collection->getArrayCopy();
 
         return $this;
     }
