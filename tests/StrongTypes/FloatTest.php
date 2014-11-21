@@ -58,4 +58,9 @@ class FloatTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', ''); // Shut-up, test runner
         new Float('123.456');
     }
+
+    public function testFloatToString()
+    {
+        $this->assertEquals('1.23', (string) new Float(1.23));
+    }
 }

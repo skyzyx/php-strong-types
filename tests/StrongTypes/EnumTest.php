@@ -34,4 +34,9 @@ class EnumTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Skyzyx\StrongTypes\Enum', get_class(new Enum()));
         $this->assertEquals([], Enum::keys());
     }
+
+    public function testEnumToString()
+    {
+        $this->assertEquals('[JOHN, PAUL, RINGO, GEORGE]', (string) new TestEnum2());
+    }
 }

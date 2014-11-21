@@ -48,4 +48,10 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', ''); // Shut-up, test runner
         new Boolean('abc');
     }
+
+    public function testBooleanToString()
+    {
+        $this->assertEquals('true', (string) new Boolean(true));
+        $this->assertEquals('false', (string) new Boolean(false));
+    }
 }

@@ -23,30 +23,14 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\StrongTypes;
+namespace Skyzyx\Tests\StrongTypes;
 
-use \ReflectionObject;
+use Skyzyx\StrongTypes\Enum;
 
-class Enum implements EnumInterface
+class TestEnum2 extends Enum
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function keys()
-    {
-        return array_keys(
-            (new ReflectionObject(new static()))
-            ->getConstants()
-        );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return sprintf('[%s]',
-            implode(', ', self::keys())
-        );
-    }
+    const JOHN   = 'John Lennon';
+    const PAUL   = 'Paul McCarthy';
+    const RINGO  = 'Ringo Starr';
+    const GEORGE = 'George Harrison';
 }

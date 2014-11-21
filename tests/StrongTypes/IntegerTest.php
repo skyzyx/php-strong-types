@@ -42,9 +42,26 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
      * @expectedExceptionMessage The Skyzyx\StrongTypes\Integer class expects a value of type integer. Received a
      *                           value of type string instead.
      */
-    public function testIntegerException()
+    public function testIntegerExceptionString()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
         new Integer('abc');
+    }
+
+    /**
+     * @expectedException        UnexpectedValueException
+     * @expectedExceptionMessage The Skyzyx\StrongTypes\Integer class expects a value of type integer. Received a
+     *                           value of type float instead.
+     */
+    public function testIntegerExceptionFloat()
+    {
+        $this->assertEquals('', ''); // Shut-up, test runner
+        new Integer(1.23);
+    }
+
+    public function testIntegerToString()
+    {
+        $this->assertEquals('12345', (string) new Integer(12345));
+        $this->assertEquals('9223372036854775807', (string) new Integer(\PHP_INT_MAX));
     }
 }
