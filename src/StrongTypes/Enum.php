@@ -32,6 +32,14 @@ class Enum implements EnumInterface, MultiValueInterface
     /**
      * {@inheritdoc}
      */
+    public function validate()
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public static function keys()
     {
         return array_keys(
@@ -48,5 +56,13 @@ class Enum implements EnumInterface, MultiValueInterface
         return sprintf('[%s]',
             implode(', ', self::keys())
         );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getValue()
+    {
+        return static::keys();
     }
 }
