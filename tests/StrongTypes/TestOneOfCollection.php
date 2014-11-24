@@ -23,26 +23,23 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\StrongTypes;
+namespace Skyzyx\Tests\StrongTypes;
 
-use \UnexpectedValueException;
+use Skyzyx\StrongTypes\OneOfCollection;
+use Skyzyx\StrongTypes\CollectionInterface;
 
-class MapCollection extends Collection
+class TestOneOfCollection extends OneOfCollection implements CollectionInterface
 {
-    /**************************************************************************/
-    // ShapeInterface
-
     /**
      * {@inheritdoc}
      */
-    public function validate()
+    public function requireOneKey()
     {
-        parent::validate();
-
-        if (!$this->isMap()) {
-            throw new UnexpectedValueException(
-                sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'associative array', gettype($this->value))
-            );
-        }
+        /** @var array */
+        return [
+            'key1',
+            'key2',
+            'key3',
+        ];
     }
 }

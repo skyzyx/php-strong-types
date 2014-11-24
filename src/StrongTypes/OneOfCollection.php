@@ -27,7 +27,7 @@ namespace Skyzyx\StrongTypes;
 
 use \UnexpectedValueException;
 
-class MapCollection extends Collection
+class OneOfCollection extends MapCollection
 {
     /**************************************************************************/
     // ShapeInterface
@@ -39,10 +39,50 @@ class MapCollection extends Collection
     {
         parent::validate();
 
-        if (!$this->isMap()) {
+        if (!is_array($this->requireOneKey())) {
             throw new UnexpectedValueException(
-                sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'associative array', gettype($this->value))
+                sprintf('The `requireOneKey()` method must retun an indexed array.')
             );
         }
+
+        $array_keys = array_keys($this->getValue());
+        $required_keys = array_flip($this->requireOneKey());
+
+        if (count($required_keys) === 0) {
+            return true;
+        }
+
+        foreach ($array_keys as $key) {
+            if (isset($required_keys[$key])) {
+                return true;
+            }
+        }
+
+        throw new UnexpectedValueException(
+            sprintf('The collection did not contain any of the required fields: %s',
+                implode(', ', $this->requireOneKey())
+            )
+        );
     }
+
+    /**
+     * Gets a list of keys where one or more are required, but not all.
+     *
+     * @return array A list of keys where one or more are required, but not all.
+     */
+    public function requireOneKey()
+    {
+        return [];
+    }
+
+
+    /**
+     * [requireOneKey description]
+     *
+     * @return [type] [description]
+     */
+    // public function requireEitherOr()
+    // {
+    //     return [];
+    // }
 }
