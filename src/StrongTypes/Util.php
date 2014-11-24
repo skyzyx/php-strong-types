@@ -23,26 +23,45 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\Tests\StrongTypes;
+namespace Skyzyx\StrongTypes;
 
-use Skyzyx\StrongTypes\Enum;
-
-class EnumTest extends \PHPUnit_Framework_TestCase
+class Util
 {
-    public function testEnumType()
+    /**
+     * Gets the most useful description of the value's type.
+     *
+     * @param  mixed  $param The value to check.
+     * @return string The description of the type of the value.
+     */
+    public static function getClassOrType($param)
     {
-        $this->assertEquals('Skyzyx\StrongTypes\Enum', get_class(new Enum()));
-        $this->assertEquals([], Enum::keys());
-        $this->assertEquals([], (new Enum())->getValue());
+        $type = gettype($param);
+
+        if ($type === 'object') {
+            return get_class($param);
+        }
+
+        return $type;
     }
 
-    public function testEnumToString()
+    /**
+     * Gets the strongly-typed version of a scalar type.
+     *
+     * @param  mixed                $value The scalar value to convert to a strong type.
+     * @return SingleValueInterface A Boolean, Integer, Float or String type.
+     */
+    public static function getStrongScalarType($value)
     {
-        $this->assertEquals('[JOHN, PAUL, RINGO, GEORGE]', (string) new TestEnum2());
-    }
-
-    public function testEnumValidate()
-    {
-        $this->assertEquals(true, (new TestEnum2())->validate());
+        if ($value === 'true' || $value === 'false') {
+            return new Boolean($value === 'true');
+        } elseif (is_numeric($value)) {
+            if (strpos($value, '.') !== false) {
+                return new Float((float) $value);
+            } else {
+                return new Integer((integer) $value);
+            }
+        } else {
+            return new String((string) $value);
+        }
     }
 }

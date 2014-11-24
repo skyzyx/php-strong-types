@@ -47,23 +47,6 @@ abstract class AbstractShape
     }
 
     /**
-     * Gets the most useful description of the value's type.
-     *
-     * @param  mixed  $param The value to check.
-     * @return string The description of the type of the value.
-     */
-    public function getClassOrType($param)
-    {
-        $type = gettype($param);
-
-        if ($type === 'object') {
-            return get_class($param);
-        }
-
-        return $type;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getValue()

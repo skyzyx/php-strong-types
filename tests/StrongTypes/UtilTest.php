@@ -25,24 +25,49 @@
 
 namespace Skyzyx\Tests\StrongTypes;
 
-use Skyzyx\StrongTypes\Enum;
+use Skyzyx\StrongTypes as IO;
 
-class EnumTest extends \PHPUnit_Framework_TestCase
+class UtilTest extends \PHPUnit_Framework_TestCase
 {
-    public function testEnumType()
+    public function testBooleanType()
     {
-        $this->assertEquals('Skyzyx\StrongTypes\Enum', get_class(new Enum()));
-        $this->assertEquals([], Enum::keys());
-        $this->assertEquals([], (new Enum())->getValue());
+        $this->assertEquals('Skyzyx\StrongTypes\Boolean',
+            IO\Util::getClassOrType(
+                IO\Util::getStrongScalarType('true')
+            )
+        );
+
+        $this->assertEquals('Skyzyx\StrongTypes\Boolean',
+            IO\Util::getClassOrType(
+                IO\Util::getStrongScalarType('false')
+            )
+        );
     }
 
-    public function testEnumToString()
+    public function testFloatType()
     {
-        $this->assertEquals('[JOHN, PAUL, RINGO, GEORGE]', (string) new TestEnum2());
+        $this->assertEquals('Skyzyx\StrongTypes\Float',
+            IO\Util::getClassOrType(
+                IO\Util::getStrongScalarType('123456.789')
+            )
+        );
     }
 
-    public function testEnumValidate()
+    public function testIntegerType()
     {
-        $this->assertEquals(true, (new TestEnum2())->validate());
+        $this->assertEquals('Skyzyx\StrongTypes\Integer',
+            IO\Util::getClassOrType(
+                IO\Util::getStrongScalarType('123456789')
+            )
+        );
+    }
+
+    public function testStringType()
+    {
+        $this->assertEquals('Skyzyx\StrongTypes\String',
+            IO\Util::getClassOrType(
+                IO\Util::getStrongScalarType('abc123')
+            )
+        );
     }
 }

@@ -26,6 +26,7 @@
 namespace Skyzyx\Tests\StrongTypes;
 
 use Skyzyx\StrongTypes\String;
+use Skyzyx\StrongTypes\Util;
 
 class StringTest extends \PHPUnit_Framework_TestCase
 {
@@ -52,8 +53,8 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testClassOrType()
     {
         $type = new String('abc');
-        $this->assertEquals('string', $type->getClassOrType('abc'));
-        $this->assertEquals('Skyzyx\StrongTypes\String', $type->getClassOrType($type));
+        $this->assertEquals('string', Util::getClassOrType('abc'));
+        $this->assertEquals('Skyzyx\StrongTypes\String', Util::getClassOrType($type));
     }
 
     public function testExactLengthOk()
