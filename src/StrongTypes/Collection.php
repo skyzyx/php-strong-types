@@ -88,7 +88,7 @@ class Collection extends AbstractShape implements CollectionInterface, IteratorA
                 // If the key is defined...
                 if (isset($map[$k])) {
                     // ...validate its shape.
-                    if (!($v instanceof $map[$k])) {
+                    if (!($v instanceof $map[$k] || gettype($v) === $this->getNativeType($map[$k]))) {
                         throw new InvalidArgumentException(
                             sprintf('The %s shape expects the %s key to be of type %s.',
                                 get_called_class(), $k, get_class($map[$k]))

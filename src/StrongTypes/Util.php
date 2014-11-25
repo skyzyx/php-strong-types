@@ -54,12 +54,18 @@ class Util
     {
         if ($value === 'true' || $value === 'false') {
             return new Boolean($value === 'true');
-        } elseif (is_numeric($value)) {
+        } elseif (is_bool($value)) {
+            return new Boolean($value);
+        } elseif (is_string($value) && is_numeric($value)) {
             if (strpos($value, '.') !== false) {
                 return new Float((float) $value);
             } else {
                 return new Integer((integer) $value);
             }
+        } elseif (is_int($value)) {
+            return new Integer($value);
+        } elseif (is_float($value)) {
+            return new Float($value);
         } else {
             return new String((string) $value);
         }

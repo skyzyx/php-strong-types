@@ -36,6 +36,19 @@ abstract class AbstractShape
     protected $value;
 
     /**
+     * A map of Strong Types => native types.
+     *
+     * @var array<string>
+     */
+    protected $typemap = [
+        'Skyzyx\\StrongTypes\\Boolean'    => 'boolean',
+        'Skyzyx\\StrongTypes\\Collection' => 'array',
+        'Skyzyx\\StrongTypes\\Integer'    => 'integer',
+        'Skyzyx\\StrongTypes\\Float'      => 'double',
+        'Skyzyx\\StrongTypes\\String'     => 'string',
+    ];
+
+    /**
      * Constructs a new instance of this object.
      *
      * @param mixed $value The value to assign to the instance.
@@ -52,6 +65,33 @@ abstract class AbstractShape
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Returns the typemap.
+     *
+     * @return array<string> The typemap.
+     */
+    public function getTypeMap()
+    {
+        return $this->typemap;
+    }
+
+    /**
+     * Gets the name of the native type that pairs with the Strong Type.
+     *
+     * @param  ShapeInterface $value A strongly-typed object.
+     * @return string         The name of the native type.
+     */
+    public function getNativeType(ShapeInterface $value)
+    {
+        foreach ($this->typemap as $type => $native) {
+            if (is_a($value, $type)) {
+                return $native;
+            }
+        }
+
+        return null;
     }
 
     /**
