@@ -191,11 +191,6 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         ]);
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage The Skyzyx\Tests\StrongTypes\TestCollection shape expects the key1 key to
-     *                           be of type Skyzyx\StrongTypes\String.
-     */
     public function testCollectionValidationStringException()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
@@ -209,17 +204,30 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         ]);
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage The Skyzyx\Tests\StrongTypes\TestCollection shape expects the key2 key to
-     *                           be of type Skyzyx\StrongTypes\Integer.
-     */
     public function testCollectionValidationIntegerException()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
         new TestCollection([
             'key1' => new String('abc'),
             'key2' => 123,
+            'key3' => new Float(123.456),
+            'key4' => new Boolean(true),
+            'key5' => new TestEnum(),
+            'key6' => new Collection([]),
+        ]);
+    }
+
+    /**
+     * @expectedException        InvalidArgumentException
+     * @expectedExceptionMessage The Skyzyx\Tests\StrongTypes\TestCollection shape expects the key2 key
+     *                           to be of type Skyzyx\StrongTypes\Integer.
+     */
+    public function testCollectionValidationIntegerException2()
+    {
+        $this->assertEquals('', ''); // Shut-up, test runner
+        new TestCollection([
+            'key1' => new String('abc'),
+            'key2' => 123.45,
             'key3' => new Float(123.456),
             'key4' => new Boolean(true),
             'key5' => new TestEnum(),

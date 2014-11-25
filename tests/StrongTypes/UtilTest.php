@@ -42,6 +42,12 @@ class UtilTest extends \PHPUnit_Framework_TestCase
                 IO\Util::getStrongScalarType('false')
             )
         );
+
+        $this->assertEquals('Skyzyx\StrongTypes\Boolean',
+            IO\Util::getClassOrType(
+                IO\Util::getStrongScalarType(true)
+            )
+        );
     }
 
     public function testFloatType()
@@ -51,6 +57,12 @@ class UtilTest extends \PHPUnit_Framework_TestCase
                 IO\Util::getStrongScalarType('123456.789')
             )
         );
+
+        $this->assertEquals('Skyzyx\StrongTypes\Float',
+            IO\Util::getClassOrType(
+                IO\Util::getStrongScalarType(123456.789)
+            )
+        );
     }
 
     public function testIntegerType()
@@ -58,6 +70,12 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Skyzyx\StrongTypes\Integer',
             IO\Util::getClassOrType(
                 IO\Util::getStrongScalarType('123456789')
+            )
+        );
+
+        $this->assertEquals('Skyzyx\StrongTypes\Integer',
+            IO\Util::getClassOrType(
+                IO\Util::getStrongScalarType(123456789)
             )
         );
     }
