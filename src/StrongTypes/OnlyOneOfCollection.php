@@ -27,11 +27,8 @@ namespace Skyzyx\StrongTypes;
 
 use \UnexpectedValueException;
 
-class OneOfCollection extends MapCollection
+class OnlyOneOfCollection extends OneOfCollection
 {
-    /**************************************************************************/
-    // ShapeInterface
-
     /**
      * {@inheritdoc}
      */
@@ -39,39 +36,41 @@ class OneOfCollection extends MapCollection
     {
         parent::validate();
 
-        if (!is_array($this->requireOneKey())) {
-            throw new UnexpectedValueException(
-                sprintf('The `requireOneKey()` method must retun an indexed array.')
-            );
-        }
-
+        $x = [];
         $array_keys = array_keys($this->getValue());
         $required_keys = array_flip($this->requireOneKey());
 
-        if (count($required_keys) === 0) {
-            return true;
-        }
-
         foreach ($array_keys as $key) {
             if (isset($required_keys[$key])) {
-                return true;
+                $x[] = $key;
             }
         }
 
-        throw new UnexpectedValueException(
-            sprintf('The collection did not contain any of the required fields: %s',
-                implode(', ', $this->requireOneKey())
-            )
-        );
+        if (count($x) > 1) {
+            throw new UnexpectedValueException(
+                sprintf('Only one of %s is allowed. Received %s instead.',
+                    sprintf('`%s`',
+                        implode('`, `', $this->requireOneKey())
+                    ),
+                    sprintf('`%s`',
+                        implode('`, `', $x)
+                    )
+                )
+            );
+        }
     }
 
     /**
-     * Gets a list of keys where one or more are required, but not all.
-     *
-     * @return array A list of keys where one or more are required, but not all.
+     * {@inheritdoc}
      */
     public function requireOneKey()
     {
-        return [];
+        /** @var array */
+        return [
+            'boolean',
+            'percentage',
+            'schedule',
+            'set',
+        ];
     }
 }
