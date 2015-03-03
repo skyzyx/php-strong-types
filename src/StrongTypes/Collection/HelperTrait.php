@@ -23,15 +23,8 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\StrongTypes;
+namespace Skyzyx\StrongTypes\Collection;
 
-use Skyzyx\StrongTypes\String\Utf8String;
-
-/**
- * Use Utf8String instead.
- *
- * @deprecated
- */
-class MultibyteString extends UTF8String
+trait HelperTrait
 {
 }

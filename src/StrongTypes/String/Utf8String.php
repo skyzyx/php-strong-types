@@ -23,15 +23,19 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\StrongTypes;
+namespace Skyzyx\StrongTypes\String;
 
-use Skyzyx\StrongTypes\String\Utf8String;
+use Skyzyx\StrongTypes\String;
 
-/**
- * Use Utf8String instead.
- *
- * @deprecated
- */
-class MultibyteString extends UTF8String
+class Utf8String extends String
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function validate()
+    {
+        parent::validate(function ($string) {
+            return mb_strlen($string);
+        });
+    }
 }

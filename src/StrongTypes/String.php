@@ -37,12 +37,50 @@ class String extends AbstractShape implements StringInterface, SingleValueInterf
     /** @var integer */
     protected $max = \PHP_INT_MAX;
 
+    /** @var callable */
+    protected $callback;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct($value = null)
+    {
+        mb_internal_encoding('UTF-8');
+        parent::__construct($value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function fromBytes($value)
+    {
+        return new static(
+            sprintf("%s",
+                preg_replace_callback('/\\\\x([[:xdigit:]]+)/i', function($matches) {
+                    return hex2bin($matches[1]);
+                }, $value)
+            )
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function fromUnicode($value)
+    {
+        return new static(
+            html_entity_decode(
+                preg_replace('/\\\\u([[:xdigit:]]+)/i', '&#x\1;', $value)
+            )
+        );
+    }
+
     /**
      * {@inheritdoc}
      */
     public function validate(callable $callback = null)
     {
-        $callback = $callback ?: function ($string) {
+        $this->callback = $callback ?: function ($string) {
             return strlen($string);
         };
 
@@ -52,6 +90,7 @@ class String extends AbstractShape implements StringInterface, SingleValueInterf
             );
         }
 
+        $callback = $this->callback;
         $length = $callback($this->value);
 
         if ($length < $this->min || $length > $this->max) {
@@ -98,6 +137,16 @@ class String extends AbstractShape implements StringInterface, SingleValueInterf
         $this->max = $length;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLength()
+    {
+        $callback = $this->callback;
+
+        return $callback($this->value);
     }
 
     /**

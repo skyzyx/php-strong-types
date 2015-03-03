@@ -28,6 +28,22 @@ namespace Skyzyx\StrongTypes;
 interface StringInterface extends ShapeInterface
 {
     /**
+     * Converts hexadecimal byte markers (e.g., `\xF0\x9F\x98\x8A`) to a String object made of the markers' value.
+     *
+     * @param  string                    $value A hexadecimal byte marker codepoint (e.g., `\xF0\x9F\x98\x8A`).
+     * @return Skyzyx\StrongTypes\String        A new <String> object.
+     */
+    public static function fromBytes($value);
+
+    /**
+     * Converts a Unicode codepoint (e.g., `\u0041`) to a String object made of the codepoint's value.
+     *
+     * @param  string                    $value A Unicode codepoint (e.g., `\u0041`).
+     * @return Skyzyx\StrongTypes\String        A new <String> object.
+     */
+    public static function fromUnicode($value);
+
+    /**
      * Sets the minimum allowable length of the string.
      *
      * @param  integer $length The length for this setting.
@@ -50,4 +66,11 @@ interface StringInterface extends ShapeInterface
      * @return self
      */
     public function setExactLength($length);
+
+    /**
+     * Gets the length of the value (as determined by the type of string).
+     *
+     * @return integer The length of the value (as determined by the type of string).
+     */
+    public function getLength();
 }

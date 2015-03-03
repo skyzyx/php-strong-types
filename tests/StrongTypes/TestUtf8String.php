@@ -23,15 +23,20 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\StrongTypes;
+namespace Skyzyx\Tests\StrongTypes;
 
 use Skyzyx\StrongTypes\String\Utf8String;
 
-/**
- * Use Utf8String instead.
- *
- * @deprecated
- */
-class MultibyteString extends UTF8String
+class TestUtf8String extends Utf8String
 {
+    /**
+     * @param string $s
+     */
+    public function __construct($s)
+    {
+        $this->setMinLength(5);
+        $this->setMaxLength(20);
+
+        parent::__construct($s);
+    }
 }

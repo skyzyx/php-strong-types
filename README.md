@@ -30,7 +30,7 @@ Enables strong types for PHP. This allows for tighter validation, especially whe
 * Enum
 * Float
 * Integer
-* String (incl. Multibyte)
+* String (incl. Utf8String)
 
 `DateTime` is already strongly typed, so use that class for strong date/time types.
 
@@ -73,16 +73,11 @@ Here's the process for contributing:
 
 ## Authors, Copyright & Licensing
 
-* Copyright (c) 2014 [Ryan Parman](http://ryanparman.com).
+* Copyright (c) 2014–2015 [Ryan Parman](http://ryanparman.com).
 
 See also the list of [contributors](/skyzyx/strong-types/contributors) who participated in this project.
 
 Licensed for use under the terms of the [MIT] license.
-
-  [PHP]: http://php.net
-  [Composer]: https://getcomposer.org
-  [MIT]: http://www.opensource.org/licenses/mit-license.php
-  [Apache 2.0]: http://opensource.org/licenses/Apache-2.0
 
 
 ## Coding Standards

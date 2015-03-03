@@ -26,6 +26,7 @@
 namespace Skyzyx\Tests\StrongTypes;
 
 use Skyzyx\StrongTypes\String;
+use Skyzyx\StrongTypes\String\Utf8String;
 use Skyzyx\StrongTypes\Util;
 
 class StringTest extends \PHPUnit_Framework_TestCase
@@ -130,7 +131,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @requires PHP 5.6
+     * @deprecated
      * @expectedException        LengthException
      * @expectedExceptionMessage The length of the Skyzyx\Tests\StrongTypes\TestMultibyteString object is 3,
      *                           but MUST be between 5 and 20.
@@ -142,11 +143,69 @@ class StringTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @requires PHP 5.6
+     * @deprecated
      */
     public function testMaxMultibyteLengthOk()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
         new TestMultibyteString('ಠ_ಠ ♪♫℃℉αβΔΣ‼︎⁈…æœ℅␛');
+    }
+
+    /**
+     * @expectedException        LengthException
+     * @expectedExceptionMessage The length of the Skyzyx\Tests\StrongTypes\TestUtf8String object is 3,
+     *                           but MUST be between 5 and 20.
+     */
+    public function testMinUtf8LengthOk()
+    {
+        $this->assertEquals('', ''); // Shut-up, test runner
+        new TestUtf8String('æœ℅');
+    }
+
+    public function testMaxUtf8LengthOk()
+    {
+        $this->assertEquals('', ''); // Shut-up, test runner
+        new TestUtf8String('ಠ_ಠ ♪♫℃℉αβΔΣ‼︎⁈…æœ℅␛');
+        new TestUtf8String('나는 유리를 먹을 수 있어요. 그래도');
+    }
+
+    public function testAsciiFromUnicode()
+    {
+        $ascii = String::fromUnicode('\u0041\u0042\u0043');
+        $this->assertEquals('ABC', $ascii->getValue());
+    }
+
+    public function testAsciiFromUnicode2()
+    {
+        $ascii = String::fromUnicode('\u1F60A');
+        $this->assertEquals('😊', $ascii->getValue());
+        $this->assertEquals(4, $ascii->getLength()); // String will always get this wrong for multibyte.
+    }
+
+    public function testUtf8FromUnicode()
+    {
+        $utf8 = Utf8String::fromUnicode('\u1F60A');
+        $this->assertEquals('😊', $utf8->getValue());
+        $this->assertEquals(1, $utf8->getLength()); // Utf8String should always get this right.
+    }
+
+    public function testAsciiFromBytes()
+    {
+        $ascii = String::fromBytes('\xF0\x9F\x98\x8A');
+        $this->assertEquals('😊', $ascii->getValue());
+        $this->assertEquals(4, $ascii->getLength()); // String will always get this wrong for multibyte.
+    }
+
+    public function testUtf8FromBytes()
+    {
+        $utf8 = Utf8String::fromBytes('\xF0\x9F\x98\x8A');
+        $this->assertEquals('😊', $utf8->getValue());
+        $this->assertEquals(1, $utf8->getLength()); // Utf8String should always get this right.
+    }
+
+    public function testUtf8FromBytes2()
+    {
+        $utf8 = Utf8String::fromBytes('Look at me smile! \xF0\x9F\x98\x8A');
+        $this->assertEquals('Look at me smile! 😊', $utf8->getValue());
     }
 }
