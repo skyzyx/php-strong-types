@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,28 +23,29 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\StrongTypes\String;
+namespace Skyzyx\StrongTypes;
 
-use UnexpectedValueException;
-use Skyzyx\StrongTypes\String;
-use Skyzyx\StrongTypes\SingleValueInterface;
+use \UnexpectedValueException;
 
-class Regex extends String implements RegexInterface
+class FloatType extends AbstractShape implements FloatInterface, SingleValueInterface
 {
     /**
      * {@inheritdoc}
      */
     public function validate()
     {
-        if (@preg_match($this->value, null) === false) {
+        if ($this->value !== null && !is_float($this->value)) {
             throw new UnexpectedValueException(
-                sprintf('The value "%s" is not a valid PCRE regular expression.', $this->value)
+                sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'float', gettype($this->value))
             );
         }
     }
 
-    public function test(SingleValueInterface $comparator)
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
     {
-        # code...
+        return (string) $this->value;
     }
 }

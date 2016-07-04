@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,43 +25,43 @@
 
 namespace Skyzyx\Tests\StrongTypes;
 
-use Skyzyx\StrongTypes\Integer;
+use Skyzyx\StrongTypes\IntegerType;
 
 class IntegerTest extends \PHPUnit_Framework_TestCase
 {
     public function testIntegerType()
     {
-        $type = new Integer(123);
+        $type = new IntegerType(123);
 
-        $this->assertEquals('Skyzyx\StrongTypes\Integer', get_class($type));
+        $this->assertEquals('Skyzyx\StrongTypes\IntegerType', get_class($type));
         $this->assertEquals(123, $type->getValue());
     }
 
     /**
      * @expectedException        UnexpectedValueException
-     * @expectedExceptionMessage The Skyzyx\StrongTypes\Integer class expects a value of type integer. Received a
+     * @expectedExceptionMessage The Skyzyx\StrongTypes\IntegerType class expects a value of type integer. Received a
      *                           value of type string instead.
      */
     public function testIntegerExceptionString()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        new Integer('abc');
+        new IntegerType('abc');
     }
 
     /**
      * @expectedException        UnexpectedValueException
-     * @expectedExceptionMessage The Skyzyx\StrongTypes\Integer class expects a value of type integer. Received a
+     * @expectedExceptionMessage The Skyzyx\StrongTypes\IntegerType class expects a value of type integer. Received a
      *                           value of type float instead.
      */
     public function testIntegerExceptionFloat()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        new Integer(1.23);
+        new IntegerType(1.23);
     }
 
     public function testIntegerToString()
     {
-        $this->assertEquals('12345', (string) new Integer(12345));
-        $this->assertEquals('9223372036854775807', (string) new Integer(\PHP_INT_MAX));
+        $this->assertEquals('12345', (string) new IntegerType(12345));
+        $this->assertEquals('9223372036854775807', (string) new IntegerType(\PHP_INT_MAX));
     }
 }

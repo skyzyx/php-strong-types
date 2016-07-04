@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,37 +25,37 @@
 
 namespace Skyzyx\Tests\StrongTypes;
 
-use Skyzyx\StrongTypes\String;
-use Skyzyx\StrongTypes\String\Utf8String;
+use Skyzyx\StrongTypes\StringType;
+use Skyzyx\StrongTypes\StringType\Utf8String;
 use Skyzyx\StrongTypes\Util;
 
 class StringTest extends \PHPUnit_Framework_TestCase
 {
     public function testStringType()
     {
-        $type = new String('abc');
+        $type = new StringType('abc');
 
-        $this->assertEquals('Skyzyx\StrongTypes\String', get_class($type));
+        $this->assertEquals('Skyzyx\StrongTypes\StringType', get_class($type));
         $this->assertEquals('abc', (string) $type);
         $this->assertEquals('abc', $type->getValue());
     }
 
     /**
      * @expectedException        UnexpectedValueException
-     * @expectedExceptionMessage The Skyzyx\StrongTypes\String class expects a value of type string.
+     * @expectedExceptionMessage The Skyzyx\StrongTypes\StringType class expects a value of type string.
      *                           Received a value of type integer instead.
      */
     public function testStringException()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        new String(123);
+        new StringType(123);
     }
 
     public function testClassOrType()
     {
-        $type = new String('abc');
+        $type = new StringType('abc');
         $this->assertEquals('string', Util::getClassOrType('abc'));
-        $this->assertEquals('Skyzyx\StrongTypes\String', Util::getClassOrType($type));
+        $this->assertEquals('Skyzyx\StrongTypes\StringType', Util::getClassOrType($type));
     }
 
     public function testExactLengthOk()
@@ -131,27 +131,6 @@ class StringTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @deprecated
-     * @expectedException        LengthException
-     * @expectedExceptionMessage The length of the Skyzyx\Tests\StrongTypes\TestMultibyteString object is 3,
-     *                           but MUST be between 5 and 20.
-     */
-    public function testMinMultibyteLengthOk()
-    {
-        $this->assertEquals('', ''); // Shut-up, test runner
-        new TestMultibyteString('æœ℅');
-    }
-
-    /**
-     * @deprecated
-     */
-    public function testMaxMultibyteLengthOk()
-    {
-        $this->assertEquals('', ''); // Shut-up, test runner
-        new TestMultibyteString('ಠ_ಠ ♪♫℃℉αβΔΣ‼︎⁈…æœ℅␛');
-    }
-
-    /**
      * @expectedException        LengthException
      * @expectedExceptionMessage The length of the Skyzyx\Tests\StrongTypes\TestUtf8String object is 3,
      *                           but MUST be between 5 and 20.
@@ -171,13 +150,13 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
     public function testAsciiFromUnicode()
     {
-        $ascii = String::fromUnicode('\u0041\u0042\u0043');
+        $ascii = StringType::fromUnicode('\u0041\u0042\u0043');
         $this->assertEquals('ABC', $ascii->getValue());
     }
 
     public function testAsciiFromUnicode2()
     {
-        $ascii = String::fromUnicode('\u1F60A');
+        $ascii = StringType::fromUnicode('\u1F60A');
         $this->assertEquals('😊', $ascii->getValue());
         $this->assertEquals(4, $ascii->getLength()); // String will always get this wrong for multibyte.
     }
@@ -191,7 +170,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
     public function testAsciiFromBytes()
     {
-        $ascii = String::fromBytes('\xF0\x9F\x98\x8A');
+        $ascii = StringType::fromBytes('\xF0\x9F\x98\x8A');
         $this->assertEquals('😊', $ascii->getValue());
         $this->assertEquals(4, $ascii->getLength()); // String will always get this wrong for multibyte.
     }

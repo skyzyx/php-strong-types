@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,9 +25,9 @@
 
 namespace Skyzyx\Tests\StrongTypes;
 
-use Skyzyx\StrongTypes\String;
+use Skyzyx\StrongTypes\StringType;
 
-class TestString3 extends String
+class TestString3 extends StringType
 {
     /**
      * @param string $s

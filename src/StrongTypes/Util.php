@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -53,21 +53,21 @@ class Util
     public static function getStrongScalarType($value)
     {
         if ($value === 'true' || $value === 'false') {
-            return new Boolean($value === 'true');
+            return new BooleanType($value === 'true');
         } elseif (is_bool($value)) {
-            return new Boolean($value);
+            return new BooleanType($value);
         } elseif (is_string($value) && is_numeric($value)) {
             if (strpos($value, '.') !== false) {
-                return new Float((float) $value);
+                return new FloatType((float) $value);
             } else {
-                return new Integer((integer) $value);
+                return new IntegerType((integer) $value);
             }
         } elseif (is_int($value)) {
-            return new Integer($value);
+            return new IntegerType($value);
         } elseif (is_float($value)) {
-            return new Float($value);
+            return new FloatType($value);
         } else {
-            return new String((string) $value);
+            return new StringType((string) $value);
         }
     }
 }

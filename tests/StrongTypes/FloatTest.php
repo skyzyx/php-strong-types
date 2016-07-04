@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,42 +25,42 @@
 
 namespace Skyzyx\Tests\StrongTypes;
 
-use Skyzyx\StrongTypes\Float;
+use Skyzyx\StrongTypes\FloatType;
 
 class FloatTest extends \PHPUnit_Framework_TestCase
 {
     public function testFloatType()
     {
-        $type = new Float(123.456);
+        $type = new FloatType(123.456);
 
-        $this->assertEquals('Skyzyx\StrongTypes\Float', get_class($type));
+        $this->assertEquals('Skyzyx\StrongTypes\FloatType', get_class($type));
         $this->assertEquals(123.456, $type->getValue());
     }
 
     /**
      * @expectedException        UnexpectedValueException
-     * @expectedExceptionMessage The Skyzyx\StrongTypes\Float class expects a value of type float.
+     * @expectedExceptionMessage The Skyzyx\StrongTypes\FloatType class expects a value of type float.
      *                           Received a value of type integer instead.
      */
     public function testFloatExceptionInteger()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        new Float(123);
+        new FloatType(123);
     }
 
     /**
      * @expectedException        UnexpectedValueException
-     * @expectedExceptionMessage The Skyzyx\StrongTypes\Float class expects a value of type float.
+     * @expectedExceptionMessage The Skyzyx\StrongTypes\FloatType class expects a value of type float.
      *                           Received a value of type string instead.
      */
     public function testFloatExceptionString()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        new Float('123.456');
+        new FloatType('123.456');
     }
 
     public function testFloatToString()
     {
-        $this->assertEquals('1.23', (string) new Float(1.23));
+        $this->assertEquals('1.23', (string) new FloatType(1.23));
     }
 }

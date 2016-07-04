@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,29 +23,19 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\StrongTypes;
+namespace Skyzyx\StrongTypes\StringType;
 
-use \UnexpectedValueException;
+use Skyzyx\StrongTypes\StringType;
 
-class Integer extends AbstractShape implements IntegerInterface, SingleValueInterface
+class Utf8String extends StringType
 {
     /**
      * {@inheritdoc}
      */
     public function validate()
     {
-        if ($this->value !== null && !is_int($this->value)) {
-            throw new UnexpectedValueException(
-                sprintf(self::TYPE_EXCEPTION_MESSAGE, get_called_class(), 'integer', gettype($this->value))
-            );
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return (string) $this->value;
+        parent::validate(function ($string) {
+            return mb_strlen($string);
+        });
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,11 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\StrongTypes\String;
+namespace Skyzyx\StrongTypes\StringType;
 
 use idna_convert as Idna;
 use UnexpectedValueException;
-use Skyzyx\StrongTypes\String;
+use Skyzyx\StrongTypes\StringType;
 
 /**
  * Not RFC-valid, but that's on purpose. In general, this validates e-mail addresses against the syntax in
@@ -39,7 +39,7 @@ use Skyzyx\StrongTypes\String;
  * @see http://tools.ietf.org/html/rfc5322
  * @see http://markonphp.com/properly-validate-email-address-php/
  */
-class Email extends String
+class Email extends StringType
 {
     /**
      * {@inheritdoc}

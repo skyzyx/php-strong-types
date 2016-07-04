@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,11 +41,11 @@ abstract class AbstractShape
      * @var array<string>
      */
     protected $typemap = [
-        'Skyzyx\\StrongTypes\\Boolean'    => 'boolean',
-        'Skyzyx\\StrongTypes\\Collection' => 'array',
-        'Skyzyx\\StrongTypes\\Integer'    => 'integer',
-        'Skyzyx\\StrongTypes\\Float'      => 'double',
-        'Skyzyx\\StrongTypes\\String'     => 'string',
+        'Skyzyx\\StrongTypes\\BooleanType' => 'boolean',
+        'Skyzyx\\StrongTypes\\Collection'  => 'array',
+        'Skyzyx\\StrongTypes\\IntegerType' => 'integer',
+        'Skyzyx\\StrongTypes\\FloatType'   => 'double',
+        'Skyzyx\\StrongTypes\\StringType'  => 'string',
     ];
 
     /**

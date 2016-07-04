@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,13 +25,13 @@
 
 namespace Skyzyx\Tests\StrongTypes;
 
-use Skyzyx\StrongTypes\Boolean;
+use Skyzyx\StrongTypes\BooleanType;
 use Skyzyx\StrongTypes\Collection;
 use Skyzyx\StrongTypes\CollectionInterface;
 use Skyzyx\StrongTypes\Enum;
-use Skyzyx\StrongTypes\Float;
-use Skyzyx\StrongTypes\Integer;
-use Skyzyx\StrongTypes\String;
+use Skyzyx\StrongTypes\FloatType;
+use Skyzyx\StrongTypes\IntegerType;
+use Skyzyx\StrongTypes\StringType;
 
 class TestCollection extends Collection implements CollectionInterface
 {
@@ -42,10 +42,10 @@ class TestCollection extends Collection implements CollectionInterface
     {
         /** @var array */
         return [
-            'key1' => new String(),
-            'key2' => new Integer(),
-            'key3' => new Float(),
-            'key4' => new Boolean(),
+            'key1' => new StringType(),
+            'key2' => new IntegerType(),
+            'key3' => new FloatType(),
+            'key4' => new BooleanType(),
             'key5' => new Enum(),
             'key6' => new Collection(),
         ];

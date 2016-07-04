@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,33 +25,33 @@
 
 namespace Skyzyx\Tests\StrongTypes;
 
-use Skyzyx\StrongTypes\Boolean;
+use Skyzyx\StrongTypes\BooleanType;
 
 class BooleanTest extends \PHPUnit_Framework_TestCase
 {
     public function testBooleanType()
     {
-        $type = new Boolean(true);
+        $type = new BooleanType(true);
 
-        $this->assertEquals('Skyzyx\StrongTypes\Boolean', get_class($type));
+        $this->assertEquals('Skyzyx\StrongTypes\BooleanType', get_class($type));
         $this->assertEquals(true, $type->getValue());
         $this->assertNotEquals(false, $type->getValue());
     }
 
     /**
      * @expectedException        UnexpectedValueException
-     * @expectedExceptionMessage The Skyzyx\StrongTypes\Boolean class expects a value of type boolean.
+     * @expectedExceptionMessage The Skyzyx\StrongTypes\BooleanType class expects a value of type boolean.
      *                           Received a value of type string instead.
      */
     public function testBooleanException()
     {
         $this->assertEquals('', ''); // Shut-up, test runner
-        new Boolean('abc');
+        new BooleanType('abc');
     }
 
     public function testBooleanToString()
     {
-        $this->assertEquals('true', (string) new Boolean(true));
-        $this->assertEquals('false', (string) new Boolean(false));
+        $this->assertEquals('true', (string) new BooleanType(true));
+        $this->assertEquals('false', (string) new BooleanType(false));
     }
 }

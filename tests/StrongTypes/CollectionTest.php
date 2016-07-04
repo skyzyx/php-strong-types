@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,11 +25,11 @@
 
 namespace Skyzyx\Tests\StrongTypes;
 
-use Skyzyx\StrongTypes\Boolean;
+use Skyzyx\StrongTypes\BooleanType;
 use Skyzyx\StrongTypes\Collection;
-use Skyzyx\StrongTypes\Float;
-use Skyzyx\StrongTypes\Integer;
-use Skyzyx\StrongTypes\String;
+use Skyzyx\StrongTypes\FloatType;
+use Skyzyx\StrongTypes\IntegerType;
+use Skyzyx\StrongTypes\StringType;
 
 class CollectionTest extends \PHPUnit_Framework_TestCase
 {
@@ -182,10 +182,10 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('', ''); // Shut-up, test runner
         new TestCollection([
-            'key1' => new String('abc'),
-            'key2' => new Integer(123),
-            'key3' => new Float(123.456),
-            'key4' => new Boolean(true),
+            'key1' => new StringType('abc'),
+            'key2' => new IntegerType(123),
+            'key3' => new FloatType(123.456),
+            'key4' => new BooleanType(true),
             'key5' => new TestEnum(),
             'key6' => new Collection([]),
         ]);
@@ -196,9 +196,9 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', ''); // Shut-up, test runner
         new TestCollection([
             'key1' => 'abc',
-            'key2' => new Integer(123),
-            'key3' => new Float(123.456),
-            'key4' => new Boolean(true),
+            'key2' => new IntegerType(123),
+            'key3' => new FloatType(123.456),
+            'key4' => new BooleanType(true),
             'key5' => new TestEnum(),
             'key6' => new Collection([]),
         ]);
@@ -208,10 +208,10 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('', ''); // Shut-up, test runner
         new TestCollection([
-            'key1' => new String('abc'),
+            'key1' => new StringType('abc'),
             'key2' => 123,
-            'key3' => new Float(123.456),
-            'key4' => new Boolean(true),
+            'key3' => new FloatType(123.456),
+            'key4' => new BooleanType(true),
             'key5' => new TestEnum(),
             'key6' => new Collection([]),
         ]);
@@ -226,10 +226,10 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('', ''); // Shut-up, test runner
         new TestCollection([
-            'key1' => new String('abc'),
+            'key1' => new StringType('abc'),
             'key2' => 123.45,
-            'key3' => new Float(123.456),
-            'key4' => new Boolean(true),
+            'key3' => new FloatType(123.456),
+            'key4' => new BooleanType(true),
             'key5' => new TestEnum(),
             'key6' => new Collection([]),
         ]);
@@ -244,8 +244,8 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('', ''); // Shut-up, test runner
         new TestCollection([
-            'key3' => new Float(123.456),
-            'key4' => new Boolean(true),
+            'key3' => new FloatType(123.456),
+            'key4' => new BooleanType(true),
             'key5' => new TestEnum(),
             'key6' => new Collection([]),
         ]);
@@ -255,10 +255,10 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('', ''); // Shut-up, test runner
         new TestCollection([
-            'key1' => new String('abc'),
-            'key2' => new Integer(123),
-            'key3' => new Float(123.456),
-            'key4' => new Boolean(true),
+            'key1' => new StringType('abc'),
+            'key2' => new IntegerType(123),
+            'key3' => new FloatType(123.456),
+            'key4' => new BooleanType(true),
             'key5' => new TestEnum(),
             'key6' => new Collection([]),
             'key7' => null,

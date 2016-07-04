@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,20 +23,44 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\Tests\StrongTypes;
+namespace Skyzyx\Tests\StrongTypes\StringType;
 
-use Skyzyx\StrongTypes\MultibyteString;
+use Skyzyx\StrongTypes\StringType\Regex;
 
-class TestMultibyteString extends MultibyteString
+class RegexTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @param string $s
-     */
-    public function __construct($s)
+    public function listValidRegexes()
     {
-        $this->setMinLength(5);
-        $this->setMaxLength(20);
+        return [
+            ["/abc/"],
+            ["/^.*(?=.{12,1000})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([^a-zA-Z\d\s:]*)$/"],
+        ];
+    }
 
-        parent::__construct($s);
+    /**
+     * @dataProvider listValidRegexes
+     */
+    public function testValidate($regex)
+    {
+        $this->assertTrue(true);
+        new Regex($regex);
+    }
+
+    public function listInvalidRegexes()
+    {
+        return [
+            ["abc"],
+            ["^.*(?=.{12,1000})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)$"],
+        ];
+    }
+
+    /**
+     * @dataProvider listInvalidRegexes
+     * @expectedException UnexpectedValueException
+     */
+    public function testInvalidate($regex)
+    {
+        $this->assertTrue(true);
+        new Regex($regex);
     }
 }

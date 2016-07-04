@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,19 +31,19 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 {
     public function testBooleanType()
     {
-        $this->assertEquals('Skyzyx\StrongTypes\Boolean',
+        $this->assertEquals('Skyzyx\StrongTypes\BooleanType',
             IO\Util::getClassOrType(
                 IO\Util::getStrongScalarType('true')
             )
         );
 
-        $this->assertEquals('Skyzyx\StrongTypes\Boolean',
+        $this->assertEquals('Skyzyx\StrongTypes\BooleanType',
             IO\Util::getClassOrType(
                 IO\Util::getStrongScalarType('false')
             )
         );
 
-        $this->assertEquals('Skyzyx\StrongTypes\Boolean',
+        $this->assertEquals('Skyzyx\StrongTypes\BooleanType',
             IO\Util::getClassOrType(
                 IO\Util::getStrongScalarType(true)
             )
@@ -52,13 +52,13 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 
     public function testFloatType()
     {
-        $this->assertEquals('Skyzyx\StrongTypes\Float',
+        $this->assertEquals('Skyzyx\StrongTypes\FloatType',
             IO\Util::getClassOrType(
                 IO\Util::getStrongScalarType('123456.789')
             )
         );
 
-        $this->assertEquals('Skyzyx\StrongTypes\Float',
+        $this->assertEquals('Skyzyx\StrongTypes\FloatType',
             IO\Util::getClassOrType(
                 IO\Util::getStrongScalarType(123456.789)
             )
@@ -67,13 +67,13 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 
     public function testIntegerType()
     {
-        $this->assertEquals('Skyzyx\StrongTypes\Integer',
+        $this->assertEquals('Skyzyx\StrongTypes\IntegerType',
             IO\Util::getClassOrType(
                 IO\Util::getStrongScalarType('123456789')
             )
         );
 
-        $this->assertEquals('Skyzyx\StrongTypes\Integer',
+        $this->assertEquals('Skyzyx\StrongTypes\IntegerType',
             IO\Util::getClassOrType(
                 IO\Util::getStrongScalarType(123456789)
             )
@@ -82,7 +82,7 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 
     public function testStringType()
     {
-        $this->assertEquals('Skyzyx\StrongTypes\String',
+        $this->assertEquals('Skyzyx\StrongTypes\StringType',
             IO\Util::getClassOrType(
                 IO\Util::getStrongScalarType('abc123')
             )

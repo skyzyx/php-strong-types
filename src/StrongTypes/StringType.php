@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ use \InvalidArgumentException;
 use \LengthException;
 use \UnexpectedValueException;
 
-class String extends AbstractShape implements StringInterface, SingleValueInterface
+class StringType extends AbstractShape implements StringInterface, SingleValueInterface
 {
     /** @var integer */
     protected $min = 0;

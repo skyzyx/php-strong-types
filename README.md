@@ -17,29 +17,69 @@
 
 Enables strong types for PHP. This allows for tighter validation, especially when accepting input from users.
 
+**Why would anyone do this?** This can be useful when developing APIs, and you want to require strict types. By defining those types/shapes ahead of time as classes, you can enforce incoming/outgoing data types, but also access the native values after the vaidation step has occurred.
 
-## Examples
-
-{Fill-in: Example usage of this code.}
-
+It intentionally rejects and avoid any kind of "type massaging". If you pass an `integer` to `StringType`, you will get an exception. All errors are thrown as Exceptions with useful error messages.
 
 ## Features
 
-* Boolean
+* BooleanType
 * Collection (ArrayAccess)
 * Enum
-* Float
-* Integer
-* String (incl. Utf8String)
+* FloatType
+* IntegerType
+* StringType (incl. Utf8String)
 
 `DateTime` is already strongly typed, so use that class for strong date/time types.
+
+
+## Examples
+
+We can do simple validation enforcement, which can be valuable in PHP 5.x. (Use strict types instead in PHP 7.)
+
+```php
+use Skyzyx\StrongTypes\StringType;
+
+$abc = new StringType('abc');
+
+$v123 = new StringType(123);
+#=> UnexpectedValueException:
+#=> The Skyzyx\StrongTypes\StringType class expects a value of type string. 
+#=> Received a value of type integer instead.
+
+$abc->getValue();
+#=> 'abc'
+```
+
+You can also extend the base types to create more specific _data types_ (aka, _data shapes_).
+
+```php
+use Skyzyx\StrongTypes\StringType;
+
+class FiveChars extends StringType
+{
+    public function __construct($s)
+    {
+        $this->setExactLength(5);
+        parent::__construct($s);
+    }
+}
+
+$abcde = new FiveChars('abcde');
+
+$abc = new FiveChars('abc');
+#=> Exception
+
+$v12345 = new FiveChars('12345');
+#=> Exception
+```
 
 
 ## Installation
 
 Using [Composer]:
 ```bash
-composer require skyzyx/strong-types=~1.0
+composer require skyzyx/strong-types=~2.0
 ```
 
 And include it in your scripts:
@@ -73,7 +113,7 @@ Here's the process for contributing:
 
 ## Authors, Copyright & Licensing
 
-* Copyright (c) 2014–2015 [Ryan Parman](http://ryanparman.com).
+* Copyright (c) 2014–2016 [Ryan Parman](http://ryanparman.com).
 
 See also the list of [contributors](/skyzyx/strong-types/contributors) who participated in this project.
 

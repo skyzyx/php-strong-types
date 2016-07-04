@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,44 +23,28 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\Tests\StrongTypes\String;
+namespace Skyzyx\StrongTypes\StringType;
 
-use Skyzyx\StrongTypes\String\Regex;
+use UnexpectedValueException;
+use Skyzyx\StrongTypes\StringType;
+use Skyzyx\StrongTypes\SingleValueInterface;
 
-class RegexTest extends \PHPUnit_Framework_TestCase
+class Regex extends StringType implements RegexInterface
 {
-    public function listValidRegexes()
-    {
-        return [
-            ["/abc/"],
-            ["/^.*(?=.{12,1000})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([^a-zA-Z\d\s:]*)$/"],
-        ];
-    }
-
     /**
-     * @dataProvider listValidRegexes
+     * {@inheritdoc}
      */
-    public function testValidate($regex)
+    public function validate()
     {
-        $this->assertTrue(true);
-        new Regex($regex);
+        if (@preg_match($this->value, null) === false) {
+            throw new UnexpectedValueException(
+                sprintf('The value "%s" is not a valid PCRE regular expression.', $this->value)
+            );
+        }
     }
 
-    public function listInvalidRegexes()
+    public function test(SingleValueInterface $comparator)
     {
-        return [
-            ["abc"],
-            ["^.*(?=.{12,1000})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)$"],
-        ];
-    }
-
-    /**
-     * @dataProvider listInvalidRegexes
-     * @expectedException UnexpectedValueException
-     */
-    public function testInvalidate($regex)
-    {
-        $this->assertTrue(true);
-        new Regex($regex);
+        # code...
     }
 }

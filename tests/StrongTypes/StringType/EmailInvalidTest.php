@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,9 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\Tests\StrongTypes\String;
+namespace Skyzyx\Tests\StrongTypes\StringType;
 
-use Skyzyx\StrongTypes\String\Email;
+use Skyzyx\StrongTypes\StringType\Email;
 
 /**
  * @see http://codefool.tumblr.com/post/15288874550/list-of-valid-and-invalid-email-addresses

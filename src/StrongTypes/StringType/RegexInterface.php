@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2015 Ryan Parman.
+ * Copyright (c) 2014-2016 Ryan Parman.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,19 +23,11 @@
  * http://opensource.org/licenses/MIT
  */
 
-namespace Skyzyx\StrongTypes\String;
+namespace Skyzyx\StrongTypes\StringType;
 
-use Skyzyx\StrongTypes\String;
+use Skyzyx\StrongTypes\StringInterface;
 
-class Utf8String extends String
+interface RegexInterface extends StringInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function validate()
-    {
-        parent::validate(function ($string) {
-            return mb_strlen($string);
-        });
-    }
+
 }
