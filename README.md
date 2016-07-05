@@ -70,7 +70,7 @@ $abcde = new FiveChars('abcde');
 $abc = new FiveChars('abc');
 #=> Exception
 
-$v12345 = new FiveChars('12345');
+$v12345 = new FiveChars(12345);
 #=> Exception
 ```
 
