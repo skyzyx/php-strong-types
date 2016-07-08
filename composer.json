@@ -14,8 +14,6 @@
         "issues": "https://github.com/skyzyx/php-strong-types/issues"
     },
     "require": {
-        "php" : ">=5.4.0",
-        "mabrahamde/idna-converter": "dev-master"
     },
     "require-dev": {
         "codeclimate/php-test-reporter" : "*@dev",
@@ -29,8 +27,16 @@
         "sebastian/hhvm-wrapper"        : "~2.0",
         "squizlabs/php_codesniffer"     : "~2.0@dev"
     },
+    "suggest": {
+        "mabrahamde/idna-converter": "Load this LGPLv2 dependency if you do not have the Intl extension installed."
+    },
     "config": {
-        "bin-dir": "bin/"
+        "bin-dir": "bin/",
+        "platform": {
+            "php": ">=5.4.0",
+            "ext-mbstring": ">= 0"
+        },
+        "optimize-autoloader": true,
     },
     "autoload": {
         "psr-4": {

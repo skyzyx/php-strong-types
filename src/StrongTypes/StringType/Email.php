@@ -25,7 +25,7 @@
 
 namespace Skyzyx\StrongTypes\StringType;
 
-use idna_convert as Idna;
+use Exception;
 use UnexpectedValueException;
 use Skyzyx\StrongTypes\StringType;
 
@@ -46,11 +46,26 @@ class Email extends StringType
      */
     public function validate()
     {
-        $idn = new Idna([
-            'idn_version' => 2008
-        ]);
+        if (!function_exists('idn_to_ascii') && !class_exists('\idna_convert')) {
+            throw new Exception('Unable to convert punycode. Either install the PHP Intl extension, or the mabrahamde/idna-converter Composer package.');
+        }
 
-        $email = $idn->encode($this->value);
+        // Use PHP Intl first
+        if (function_exists('idn_to_ascii')) {
+            $email = idn_to_ascii($this->value);
+
+        // Fall back to the idna_convert class
+        } elseif (class_exists('\idna_convert')) {
+            $idn = new \idna_convert([
+                'idn_version' => 2008
+            ]);
+
+            $email = $idn->encode($this->value);
+
+        // Fall back to no conversion
+        } else {
+            $email = $this->value;
+        }
 
         if (!(
             filter_var($email, FILTER_VALIDATE_EMAIL) && // RFC 822 (obsolete). Exceptions: no comments, no whitespace
