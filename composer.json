@@ -18,7 +18,7 @@
     "require-dev": {
         "codeclimate/php-test-reporter" : "*@dev",
         "d11wtq/boris"                  : "*",
-        "fabpot/php-cs-fixer"           : "*",
+        "friendsofphp/php-cs-fixer"     : "*",
         "pdepend/pdepend"               : "*",
         "phpmd/phpmd"                   : "*",
         "phpunit/phpcov"                : "~2.0",
