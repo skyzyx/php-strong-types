@@ -100,7 +100,7 @@ class OneOfCollectionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException        UnexpectedValueException
-     * @expectedExceptionMessage The `requireOneKey()` method must retun an indexed array.
+     * @expectedExceptionMessage The `requireOneKey()` method must return an indexed array.
      */
     public function testOneOfCollectionFail2()
     {

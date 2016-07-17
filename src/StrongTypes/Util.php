@@ -70,4 +70,17 @@ class Util
             return new StringType((string) $value);
         }
     }
+
+    /**
+     * Convenience method for validating and returning a native value in one step.
+     *
+     * @param  ShapeInterface $shape A ShapeInterface object.
+     * @return mixed                 The native value, validated as its expected type.
+     */
+    public static function getValidatedValue(ShapeInterface $shape)
+    {
+        $shape->validate();
+
+        return $shape->getValue();
+    }
 }

@@ -4,6 +4,8 @@
     bootstrap="tests/bootstrap.php"
     colors="true"
     convertErrorsToExceptions="true"
+    printerFile="vendor/skyzyx/phpunit-result-printer/ResultPrinter.php"
+    printerClass="Skyzyx\ResultPrinter\ResultPrinter"
     processIsolation="true"
     stopOnError="false"
     stopOnFailure="false"
@@ -16,6 +18,12 @@
             <directory phpVersion="5.4.0" phpVersionOperator=">=" suffix="Test.php">tests/StrongTypes</directory>
         </testsuite>
     </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
 
     <logging>
         <log charset="UTF-8" highLowerBound="70" highlight="false" lowUpperBound="35" target="build/logs/report" type="coverage-html"/>

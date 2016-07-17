@@ -14,27 +14,25 @@
         "issues": "https://github.com/skyzyx/php-strong-types/issues"
     },
     "require": {
+        "php": ">= 5.4",
+        "skyzyx/phpunit-result-printer": "^1.0"
     },
     "require-dev": {
         "codeclimate/php-test-reporter" : "*@dev",
-        "d11wtq/boris"                  : "*",
-        "friendsofphp/php-cs-fixer"     : "*",
-        "pdepend/pdepend"               : "*",
-        "phpmd/phpmd"                   : "*",
-        "phpunit/phpcov"                : "*",
-        "phpunit/phpunit"               : "*",
+        "d11wtq/boris"                  : "^1.0",
+        "friendsofphp/php-cs-fixer"     : "^1.0",
+        "pdepend/pdepend"               : "^2.2",
+        "phpmd/phpmd"                   : "^2.4",
+        "phpunit/phpcov"                : "^3.1",
+        "phpunit/phpunit"               : "^5.0",
         "satooshi/php-coveralls"        : "*@dev",
-        "squizlabs/php_codesniffer"     : "*"
+        "squizlabs/php_codesniffer"     : "^2.6"
     },
     "suggest": {
         "mabrahamde/idna-converter": "Load this LGPLv2 dependency if you do not have the Intl extension installed."
     },
     "config": {
         "bin-dir": "bin/",
-        "platform": {
-            "php": "5.4",
-            "ext-mbstring": "0"
-        },
         "optimize-autoloader": true
     },
     "autoload": {

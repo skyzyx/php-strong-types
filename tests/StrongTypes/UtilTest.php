@@ -88,4 +88,40 @@ class UtilTest extends \PHPUnit_Framework_TestCase
             )
         );
     }
+
+    public function testValidatedBooleanType()
+    {
+        $this->assertEquals(true,
+            IO\Util::getValidatedValue(
+                new IO\BooleanType(true)
+            )
+        );
+    }
+
+    public function testValidatedFloatType()
+    {
+        $this->assertEquals(123456.789,
+            IO\Util::getValidatedValue(
+                new IO\FloatType(123456.789)
+            )
+        );
+    }
+
+    public function testValidatedIntegerType()
+    {
+        $this->assertEquals(123456789,
+            IO\Util::getValidatedValue(
+                new IO\IntegerType(123456789)
+            )
+        );
+    }
+
+    public function testValidatedStringType()
+    {
+        $this->assertEquals('abc123',
+            IO\Util::getValidatedValue(
+                new IO\StringType('abc123')
+            )
+        );
+    }
 }

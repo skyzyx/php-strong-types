@@ -41,7 +41,7 @@ class OneOfCollection extends MapCollection
 
         if (!is_array($this->requireOneKey())) {
             throw new UnexpectedValueException(
-                sprintf('The `requireOneKey()` method must retun an indexed array.')
+                sprintf('The `requireOneKey()` method must return an indexed array.')
             );
         }
 
