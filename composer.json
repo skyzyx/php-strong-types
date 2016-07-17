@@ -21,10 +21,10 @@
         "friendsofphp/php-cs-fixer"     : "*",
         "pdepend/pdepend"               : "*",
         "phpmd/phpmd"                   : "*",
-        "phpunit/phpcov"                : "~2.0",
-        "phpunit/phpunit"               : "~4.3",
+        "phpunit/phpcov"                : "*",
+        "phpunit/phpunit"               : "*",
         "satooshi/php-coveralls"        : "*@dev",
-        "squizlabs/php_codesniffer"     : "~2.0@dev"
+        "squizlabs/php_codesniffer"     : "*"
     },
     "suggest": {
         "mabrahamde/idna-converter": "Load this LGPLv2 dependency if you do not have the Intl extension installed."
