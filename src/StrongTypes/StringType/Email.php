@@ -46,6 +46,7 @@ class Email extends StringType
      */
     public function validate()
     {
+        // @codeCoverageIgnoreStart
         if (!function_exists('idn_to_ascii') && !class_exists('\idna_convert')) {
             throw new Exception('Unable to convert punycode. Either install the PHP Intl extension, or the mabrahamde/idna-converter Composer package.');
         }
@@ -66,6 +67,7 @@ class Email extends StringType
         } else {
             $email = $this->value;
         }
+        // @codeCoverageIgnoreEnd
 
         if (!(
             filter_var($email, FILTER_VALIDATE_EMAIL) && // RFC 822 (obsolete). Exceptions: no comments, no whitespace
