@@ -36,7 +36,7 @@ class Regex extends StringType implements RegexInterface
      */
     public function validate()
     {
-        if (@preg_match($this->value, null) === false) {
+        if (preg_match($this->value, null) === false) {
             throw new UnexpectedValueException(
                 sprintf('The value "%s" is not a valid PCRE regular expression.', $this->value)
             );
