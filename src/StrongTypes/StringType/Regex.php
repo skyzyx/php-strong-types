@@ -36,9 +36,13 @@ class Regex extends StringType implements RegexInterface
      */
     public function validate()
     {
-        if (preg_match($this->value, null) === false) {
+        // Sensio Insight *hates* this `@` operator. Because this function spews an E_WARNING, we have no choice but to silence it. :rageface:
+        if (@preg_match($this->value, null) === false) {
+
+            $etype = array_flip(get_defined_constants(true)['pcre'])[preg_last_error()];
+
             throw new UnexpectedValueException(
-                sprintf('The value "%s" is not a valid PCRE regular expression.', $this->value)
+                sprintf('There is a problem with the value "%s". [%s]', $this->value, $etype)
             );
         }
     }
