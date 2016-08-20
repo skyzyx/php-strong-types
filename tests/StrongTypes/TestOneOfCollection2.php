@@ -25,8 +25,8 @@
 
 namespace Skyzyx\Tests\StrongTypes;
 
-use Skyzyx\StrongTypes\OneOfCollection;
 use Skyzyx\StrongTypes\CollectionInterface;
+use Skyzyx\StrongTypes\OneOfCollection;
 
 class TestOneOfCollection2 extends OneOfCollection implements CollectionInterface
 {

@@ -25,9 +25,9 @@
 
 namespace Skyzyx\StrongTypes\StringType;
 
-use UnexpectedValueException;
-use Skyzyx\StrongTypes\StringType;
 use Skyzyx\StrongTypes\SingleValueInterface;
+use Skyzyx\StrongTypes\StringType;
+use UnexpectedValueException;
 
 class Regex extends StringType implements RegexInterface
 {
